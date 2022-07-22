@@ -42,13 +42,13 @@ class LayoutView: UIView {
       
     }
   }
-  
-  @IBAction func addPicture(_ sender: UIButton) {
-    sender.setTitle("", for: .normal)
-    sender.setImage(UIImage(named: "Selected"), for: .normal)
-    sender.contentVerticalAlignment = .fill
-    sender.contentHorizontalAlignment = .fill
-  }
+}
 
-
+extension UIView {
+    func asImage() -> UIImage {
+            let renderer = UIGraphicsImageRenderer(bounds: bounds)
+            return renderer.image { rendererContext in
+                layer.render(in: rendererContext.cgContext)
+            }
+    }
 }

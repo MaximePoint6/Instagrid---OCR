@@ -26,10 +26,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dB1-l7-w86" userLabel="Slack view general">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dB1-l7-w86" userLabel="Slack view general">
                                 <rect key="frame" x="20" y="138.66666666666669" width="388" height="733.33333333333326"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vnc-wc-oqx" userLabel="Stack View Swipe">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vnc-wc-oqx" userLabel="Stack View Swipe">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="45"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="Lzb-XD-QHw">
@@ -88,7 +88,7 @@
                                         </variation>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-D8-zO9" userLabel="LayoutView" customClass="LayoutView" customModule="Instagrid" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="134" width="388" height="388"/>
+                                        <rect key="frame" x="0.0" y="153.33333333333337" width="388" height="388"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o2h-9g-ITd" userLabel="Stack View Layout">
                                                 <rect key="frame" x="10" y="10" width="368" height="368"/>
@@ -105,8 +105,7 @@
                                                                     <color key="titleColor" red="0.35686278339999999" green="0.41568624970000001" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="addPicture:" destination="rbf-Ho-rPF" eventType="touchUpInside" id="V7b-QW-1dr"/>
-                                                                    <action selector="addPicture:" destination="Vbu-D8-zO9" eventType="touchUpInside" id="sIR-yt-Ewg"/>
+                                                                    <action selector="addPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ee7-sV-Kde"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUx-XU-WWF" userLabel="topRightButton">
@@ -118,7 +117,7 @@
                                                                     <color key="titleColor" red="0.35686278339999999" green="0.41568624970000001" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="addPicture:" destination="Vbu-D8-zO9" eventType="touchUpInside" id="GjA-fA-qbb"/>
+                                                                    <action selector="addPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJM-g8-gqk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -135,7 +134,7 @@
                                                                     <color key="titleColor" red="0.35686278339999999" green="0.41568624970000001" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="addPicture:" destination="Vbu-D8-zO9" eventType="touchUpInside" id="CIm-hf-IAL"/>
+                                                                    <action selector="addPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLQ-Qo-KqR"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbx-rv-cQ4" userLabel="lowerRightButton">
@@ -147,7 +146,7 @@
                                                                     <color key="titleColor" red="0.35686278339999999" green="0.41568624970000001" blue="0.50588238240000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="addPicture:" destination="Vbu-D8-zO9" eventType="touchUpInside" id="zcd-Go-DUv"/>
+                                                                    <action selector="addPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fg4-8Q-YEk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -276,7 +275,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="rbf-Ho-rPF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="29.23076923076923" y="91.706161137440759"/>
         </scene>

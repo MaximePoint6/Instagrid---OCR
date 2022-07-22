@@ -334,6 +334,8 @@
 				DEVELOPMENT_TEAM = 3SQYF6L285;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This application uses the camera to take pretty pictures and add them to the template.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This application uses the photo library to add pretty photos in the template.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -364,6 +366,8 @@
 				DEVELOPMENT_TEAM = 3SQYF6L285;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This application uses the camera to take pretty pictures and add them to the template.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This application uses the photo library to add pretty photos in the template.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
