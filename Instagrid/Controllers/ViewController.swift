@@ -89,6 +89,8 @@ class ViewController: UIViewController {
             if translation.y >= 0 {
                 translation.y = 0
             } else if translation.y <= negativeTranslationToShare {
+                let translationTransform = CGAffineTransform(translationX: 0, y: translation.y)
+                currentLayoutView.transform = translationTransform
                 imageToShare = true
             } else {
                 let translationTransform = CGAffineTransform(translationX: 0, y: translation.y)
@@ -99,6 +101,8 @@ class ViewController: UIViewController {
             if translation.x >= 0 {
                 translation.x = 0
             } else if translation.x <= negativeTranslationToShare {
+                let translationTransform = CGAffineTransform(translationX: translation.x, y: 0)
+                currentLayoutView.transform = translationTransform
                 imageToShare = true
             } else {
                 let translationTransform = CGAffineTransform(translationX: translation.x, y: 0)
@@ -143,8 +147,10 @@ class ViewController: UIViewController {
         let items = [self.currentLayoutView.asImage()]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true, completion: nil)
+        ac.completionWithItemsHandler = { activity, success, items, error in
+            self.resetLayoutView()
+        }
         imageToShare = false
-        resetLayoutView()
     }
     
     //MARK: ImagePicker

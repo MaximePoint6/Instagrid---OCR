@@ -19,7 +19,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InstaGrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leS-wE-lQ9">
                                 <rect key="frame" x="154" y="64" width="120" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="9cR-O3-YQG"/>
+                                    <constraint firstAttribute="height" constant="40" id="9cR-O3-YQG"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="P1X-2k-zEr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="29"/>
@@ -29,11 +29,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dB1-l7-w86" userLabel="Slack view general">
                                 <rect key="frame" x="20" y="139" width="388" height="733"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vnc-wc-oqx" userLabel="Stack View Swipe">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vnc-wc-oqx" userLabel="Stack View Swipe">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="55"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="Lzb-XD-QHw">
-                                                <rect key="frame" x="0.0" y="138.66666666666666" width="20" height="15"/>
+                                                <rect key="frame" x="0.0" y="151" width="20" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Lzb-XD-QHw" secondAttribute="height" multiplier="4:3" id="0JY-Pw-YiF"/>
                                                     <constraint firstAttribute="height" constant="15" id="AUF-m8-FCe"/>
@@ -47,7 +47,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIM-AB-9zG">
-                                                <rect key="frame" x="30" y="131" width="130" height="30"/>
+                                                <rect key="frame" x="30" y="143.66666666666666" width="190.66666666666666" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Txw-QG-COk"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="agn-fq-Hy4"/>
@@ -213,10 +213,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Vbu-D8-zO9" firstAttribute="centerX" secondItem="dB1-l7-w86" secondAttribute="centerX" id="3Vd-IG-9to"/>
-                                    <constraint firstItem="Vnc-wc-oqx" firstAttribute="leading" secondItem="dB1-l7-w86" secondAttribute="leading" id="5FE-mI-LEP"/>
                                     <constraint firstItem="Vnc-wc-oqx" firstAttribute="centerX" secondItem="dB1-l7-w86" secondAttribute="centerX" id="Qqr-bS-Xhc"/>
                                     <constraint firstItem="Vnc-wc-oqx" firstAttribute="centerY" secondItem="dB1-l7-w86" secondAttribute="centerY" id="Yse-WA-FmI"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vnc-wc-oqx" secondAttribute="trailing" id="f8X-nS-5R9"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -228,7 +226,6 @@
                                     <mask key="constraints">
                                         <exclude reference="Qqr-bS-Xhc"/>
                                         <include reference="Yse-WA-FmI"/>
-                                        <exclude reference="f8X-nS-5R9"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
@@ -248,7 +245,9 @@
                             <constraint firstItem="leS-wE-lQ9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hm3-ay-GMQ"/>
                             <constraint firstItem="dB1-l7-w86" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NOM-J3-x4v"/>
                             <constraint firstItem="dB1-l7-w86" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PNF-fM-AFj"/>
-                            <constraint firstItem="dB1-l7-w86" firstAttribute="top" secondItem="leS-wE-lQ9" secondAttribute="bottom" constant="35" id="tCe-z2-K1B"/>
+                            <constraint firstItem="dB1-l7-w86" firstAttribute="top" secondItem="leS-wE-lQ9" secondAttribute="bottom" constant="35" id="tCe-z2-K1B">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
