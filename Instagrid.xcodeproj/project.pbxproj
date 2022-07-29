@@ -64,20 +64,20 @@
 			children = (
 				CAD84F9328815026002188BB /* Info.plist */,
 				CAD84F9E28815359002188BB /* Models */,
-				CAD84F9D28815351002188BB /* View */,
+				CAD84F9D28815351002188BB /* Views */,
 				CAD84F9F28815360002188BB /* Controllers */,
 				CAD84FA028815429002188BB /* Supporting Files */,
 			);
 			path = Instagrid;
 			sourceTree = "<group>";
 		};
-		CAD84F9D28815351002188BB /* View */ = {
+		CAD84F9D28815351002188BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				CAD84F8B28815025002188BB /* Main.storyboard */,
 				CA4FCD0D2882C1AC009E0F52 /* LayoutView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CAD84F9E28815359002188BB /* Models */ = {
