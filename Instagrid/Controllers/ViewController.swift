@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     private func setupUI() {
         appTitle.font = UIFont(name: "ThirstySoftRegular", size: 30)
         appSubtitle.font = UIFont(name: "Delm-Medium", size: 26)
-        horizontalAppSubtitle.font = UIFont(name: "Delm-Medium", size: 26)
+        horizontalAppSubtitle.font = UIFont(name: "Delm-Medium", size: 16)
     }
     
     @IBAction func layoutSelection(_ sender: UIButton) {
