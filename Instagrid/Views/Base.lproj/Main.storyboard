@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXI-ax-DEp">
-                                <rect key="frame" x="20" y="185" width="374" height="56"/>
+                                <rect key="frame" x="20" y="195" width="374" height="56"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="xSp-hA-hBO">
                                         <rect key="frame" x="180.66666666666666" y="4" width="13" height="10"/>
@@ -299,7 +299,7 @@
                             <constraint firstItem="leS-wE-lQ9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hm3-ay-GMQ"/>
                             <constraint firstItem="Vbu-D8-zO9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ili-Iz-dSi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vbu-D8-zO9" secondAttribute="trailing" constant="20" id="Ji4-vs-LiB"/>
-                            <constraint firstItem="Vbu-D8-zO9" firstAttribute="top" secondItem="EXI-ax-DEp" secondAttribute="bottom" constant="20" id="Kub-16-OoM"/>
+                            <constraint firstItem="Vbu-D8-zO9" firstAttribute="top" secondItem="EXI-ax-DEp" secondAttribute="bottom" constant="10" id="Kub-16-OoM"/>
                             <constraint firstItem="pQs-37-kh5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vbu-D8-zO9" secondAttribute="trailing" constant="20" id="MfG-Hw-1za"/>
                             <constraint firstItem="Vbu-D8-zO9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pem-U7-YeE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pQs-37-kh5" secondAttribute="trailing" constant="30" id="T3E-yG-mDU"/>
