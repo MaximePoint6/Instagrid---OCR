@@ -15,9 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var appTitle: UILabel!
     @IBOutlet weak var appSubtitle: UILabel!
     @IBOutlet weak var horizontalAppSubtitle: UILabel!
-    @IBOutlet var layouts: [UIButton]!
+    @IBOutlet var layoutsButtons: [UIButton]!
     @IBOutlet weak var currentLayoutView: LayoutView!
-    var buttonClicked: UIButton!
+    var layoutButtonClicked: UIButton!
     var orientation: Orientation = .portrait
     let negativeTranslationToShare: CGFloat = -150
     var imageToShare = false
@@ -25,6 +25,12 @@ class ViewController: UIViewController {
     enum Orientation {
         case landscape
         case portrait
+    }
+    
+    enum LayoutTypeButton: Int {
+        case OneUpTwoDown = 1
+        case TwoUpOneDown = 2
+        case TwoUpTwoDown = 3
     }
     
     override func viewDidLoad() {
@@ -41,6 +47,7 @@ class ViewController: UIViewController {
         orientation = UIDevice.current.orientation.isLandscape ? .landscape : .portrait
     }
     
+    //MARK: UI
     private func setupUI() {
         appTitle.font = UIFont(name: "ThirstySoftRegular", size: 30)
         appSubtitle.font = UIFont(name: "Delm-Medium", size: 20)
@@ -48,15 +55,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func layoutSelection(_ sender: UIButton) {
-        _ = self.layouts.map { $0.isSelected = false } // Remplace boucle for
+        _ = self.layoutsButtons.map { $0.isSelected = false } // replace the loop "for"
         sender.isSelected = !sender.isSelected
         sender.setImage(UIImage(named: "Selected"), for: .selected)
         sender.contentVerticalAlignment = .fill
         sender.contentHorizontalAlignment = .fill
         
-        if sender.tag == 0 {
+        if sender.tag == LayoutTypeButton.OneUpTwoDown.rawValue {
             self.currentLayoutView.layoutType = .OneUpTwoDown
-        } else if sender.tag == 1 {
+        } else if sender.tag == LayoutTypeButton.TwoUpOneDown.rawValue {
             self.currentLayoutView.layoutType = .TwoUpOneDown
         } else {
             self.currentLayoutView.layoutType = .TwoUpTwoDown
@@ -64,93 +71,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addPicture(_ sender: UIButton) {
-        buttonClicked = sender
+        layoutButtonClicked = sender
         showImagePickerOption()
-    }
-    
-    //MARK: Swipe up and Swipe left
-    @objc private func didSwipe(_ sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .began, .changed:
-            transformeView(gesture: sender)
-        case .ended, .cancelled:
-            animationView()
-        default:
-            break
-        }
-    }
-    
-    //MARK: Animations
-    private func transformeView(gesture: UIPanGestureRecognizer) {
-        // Translation
-        var translation = gesture.translation(in: currentLayoutView)
-        switch orientation {
-        case .portrait:
-            if translation.y >= 0 {
-                translation.y = 0
-            } else if translation.y <= negativeTranslationToShare {
-                let translationTransform = CGAffineTransform(translationX: 0, y: translation.y)
-                currentLayoutView.transform = translationTransform
-                imageToShare = true
-            } else {
-                let translationTransform = CGAffineTransform(translationX: 0, y: translation.y)
-                currentLayoutView.transform = translationTransform
-                imageToShare = false
-            }
-        case .landscape:
-            if translation.x >= 0 {
-                translation.x = 0
-            } else if translation.x <= negativeTranslationToShare {
-                let translationTransform = CGAffineTransform(translationX: translation.x, y: 0)
-                currentLayoutView.transform = translationTransform
-                imageToShare = true
-            } else {
-                let translationTransform = CGAffineTransform(translationX: translation.x, y: 0)
-                currentLayoutView.transform = translationTransform
-                imageToShare = false
-            }
-        }
-    }
-    
-    private func animationView() {
-        // Animation Question View
-        if imageToShare == false {
-            resetLayoutView()
-        } else {
-            let screenHeight = UIScreen.main.bounds.height
-            let screenWidth = UIScreen.main.bounds.width
-            let translationTransform: CGAffineTransform
-            switch orientation {
-            case .landscape:
-                translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
-            case .portrait:
-                translationTransform = CGAffineTransform(translationX: 0, y: -screenHeight)
-            }
-            UIView.animate(withDuration: 0.5, animations: {
-                self.currentLayoutView.transform = translationTransform
-            }, completion: { (success) in
-                if success {
-                    self.picturesharing()
-                }
-            })
-        }
-    }
-    
-    private func resetLayoutView() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.currentLayoutView.transform = .identity
-        }, completion:nil)
-    }
-    
-    //MARK: picture sharing
-    private func picturesharing(){
-        let items = [self.currentLayoutView.asImage()]
-        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        present(ac, animated: true, completion: nil)
-        ac.completionWithItemsHandler = { activity, success, items, error in
-            self.resetLayoutView()
-        }
-        imageToShare = false
     }
     
     //MARK: ImagePicker
@@ -270,14 +192,91 @@ class ViewController: UIViewController {
         return imagePicker
     }
     
+    //MARK: Swipe up and Swipe left
+    @objc private func didSwipe(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began, .changed:
+            transformLayoutView(gesture: sender)
+        case .ended, .cancelled:
+            animationLayoutView()
+        default:
+            break
+        }
+    }
+    
+    //MARK: Transform, Animation and Reset Layout View
+    private func transformLayoutView(gesture: UIPanGestureRecognizer) {
+        // Translation
+        var translation = gesture.translation(in: currentLayoutView)
+        switch orientation {
+        case .portrait:
+            if translation.y >= 0 {
+                translation.y = 0 // so we can't slide down
+            } else {
+                let translationTransform = CGAffineTransform(translationX: 0, y: translation.y)
+                currentLayoutView.transform = translationTransform
+            }
+            imageToShare = translation.y <= negativeTranslationToShare ? true : false
+        case .landscape:
+            if translation.x >= 0 {
+                translation.x = 0 // so we can't slide to the right
+            } else {
+                let translationTransform = CGAffineTransform(translationX: translation.x, y: 0)
+                currentLayoutView.transform = translationTransform
+            }
+            imageToShare = translation.x <= negativeTranslationToShare ? true : false
+        }
+    }
+    
+    private func animationLayoutView() {
+        // Animation Question View
+        if imageToShare == false {
+            resetLayoutView()
+        } else {
+            let screenHeight = UIScreen.main.bounds.height
+            let screenWidth = UIScreen.main.bounds.width
+            let translationTransform: CGAffineTransform
+            switch orientation {
+            case .landscape:
+                translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
+            case .portrait:
+                translationTransform = CGAffineTransform(translationX: 0, y: -screenHeight)
+            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.currentLayoutView.transform = translationTransform
+            }, completion: { (success) in
+                if success {
+                    self.picturesharing()
+                }
+            })
+        }
+    }
+    
+    private func resetLayoutView() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.currentLayoutView.transform = .identity
+        }, completion:nil)
+    }
+    
+    //MARK: picture sharing
+    private func picturesharing(){
+        let items = [self.currentLayoutView.asImage()]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true, completion: nil)
+        ac.completionWithItemsHandler = { activity, success, items, error in
+            self.resetLayoutView()
+        }
+        imageToShare = false
+    }
+    
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as! UIImage
-        self.buttonClicked.setImage(image, for: .normal)
-        self.buttonClicked.setTitle("", for: .normal)
-        buttonClicked.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        self.layoutButtonClicked.setImage(image, for: .normal)
+        self.layoutButtonClicked.setTitle("", for: .normal)
+        layoutButtonClicked.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         self.dismiss(animated: true, completion: nil)
     }
 }
