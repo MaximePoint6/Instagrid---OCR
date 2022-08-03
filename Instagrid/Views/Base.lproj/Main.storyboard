@@ -157,7 +157,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-D8-zO9" userLabel="LayoutView" customClass="LayoutView" customModule="Instagrid" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-D8-zO9" userLabel="LayoutView" customClass="GridView" customModule="Instagrid" customModuleProvider="target">
                                 <rect key="frame" x="20" y="144" width="280" height="280"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o2h-9g-ITd" userLabel="Stack View Layout">
@@ -380,7 +380,7 @@
                     <connections>
                         <outlet property="appSubtitle" destination="If7-o6-W4a" id="7Gv-pK-dfk"/>
                         <outlet property="appTitle" destination="leS-wE-lQ9" id="vi3-wF-c8t"/>
-                        <outlet property="currentLayoutView" destination="Vbu-D8-zO9" id="kN6-Oy-mF6"/>
+                        <outlet property="gridView" destination="Vbu-D8-zO9" id="kN6-Oy-mF6"/>
                         <outlet property="horizontalAppSubtitle" destination="tIM-AB-9zG" id="icx-eq-8hk"/>
                         <outletCollection property="layoutsButtons" destination="w3S-qr-FJm" collectionClass="NSMutableArray" id="PkY-cb-lRK"/>
                         <outletCollection property="layoutsButtons" destination="MmL-Wq-veB" collectionClass="NSMutableArray" id="adZ-Iw-Nlk"/>

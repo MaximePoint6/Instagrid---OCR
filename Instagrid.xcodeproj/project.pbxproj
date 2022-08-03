@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA08C6F728882AC400ACFFF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08C6F628882AC400ACFFF9 /* SceneDelegate.swift */; };
-		CA4FCD0E2882C1AC009E0F52 /* LayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FCD0D2882C1AC009E0F52 /* LayoutView.swift */; };
+		CA4FCD0E2882C1AC009E0F52 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FCD0D2882C1AC009E0F52 /* GridView.swift */; };
 		CAD84F8628815025002188BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD84F8528815025002188BB /* AppDelegate.swift */; };
 		CAD84F8A28815025002188BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD84F8928815025002188BB /* ViewController.swift */; };
 		CAD84F8D28815025002188BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAD84F8B28815025002188BB /* Main.storyboard */; };
@@ -20,7 +20,7 @@
 
 /* Begin PBXFileReference section */
 		CA08C6F628882AC400ACFFF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CA4FCD0D2882C1AC009E0F52 /* LayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutView.swift; sourceTree = "<group>"; };
+		CA4FCD0D2882C1AC009E0F52 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		CAD84F8228815025002188BB /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD84F8528815025002188BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAD84F8928815025002188BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD84F8B28815025002188BB /* Main.storyboard */,
-				CA4FCD0D2882C1AC009E0F52 /* LayoutView.swift */,
+				CA4FCD0D2882C1AC009E0F52 /* GridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA4FCD0E2882C1AC009E0F52 /* LayoutView.swift in Sources */,
+				CA4FCD0E2882C1AC009E0F52 /* GridView.swift in Sources */,
 				CAD84F8A28815025002188BB /* ViewController.swift in Sources */,
 				CAD84F8628815025002188BB /* AppDelegate.swift in Sources */,
 				CA08C6F728882AC400ACFFF9 /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  LayoutView.swift
+//  GridView.swift
 //  Instagrid
 //
 //  Created by Maxime Point on 16/07/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LayoutView: UIView {
+class GridView: UIView {
     
     enum LayoutType {
         case OneUpTwoDown
@@ -26,12 +26,12 @@ class LayoutView: UIView {
     
     var layoutType: LayoutType = .OneUpTwoDown {
         didSet {
-            currentLayoutUpdate()
+            layoutUpdate()
         }
     }
     
     /// Function updating the current layout according to the type of layout selected.
-    func currentLayoutUpdate() {
+    func layoutUpdate() {
         for button in Imagesbuttons {
             button.isHidden = false
             switch layoutType {

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var appSubtitle: UILabel!
     @IBOutlet weak var horizontalAppSubtitle: UILabel!
     @IBOutlet var layoutsButtons: [UIButton]!
-    @IBOutlet weak var currentLayoutView: LayoutView!
+    @IBOutlet weak var gridView: GridView!
     var layoutButtonClicked: UIButton!
     var orientation: Orientation = .portrait
     let negativeTranslationToShare: CGFloat = -150
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         setupUI()
         // Initialize Swipe Gesture Recognizer
         let swipeGestureRecognizerUp = UIPanGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
-        currentLayoutView.addGestureRecognizer(swipeGestureRecognizerUp)
+        gridView.addGestureRecognizer(swipeGestureRecognizerUp)
     }
     
     //MARK: DEvice orientation
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         horizontalAppSubtitle.font = UIFont(name: "Delm-Medium", size: 20)
     }
     
-    /// Function modifying the UI when selecting the layout button and changing the layout type of the currentLayoutView.
+    /// Function modifying the UI when selecting the layout button and changing the layout type of the gridView
     /// - Parameter sender: Button selected to change layout
     @IBAction func layoutSelection(_ sender: UIButton) {
         _ = self.layoutsButtons.map { $0.isSelected = false } // replace the loop "for"
@@ -65,11 +65,11 @@ class ViewController: UIViewController {
         sender.contentHorizontalAlignment = .fill
         
         if sender.tag == LayoutTypeButton.OneUpTwoDown.rawValue {
-            self.currentLayoutView.layoutType = .OneUpTwoDown
+            self.gridView.layoutType = .OneUpTwoDown
         } else if sender.tag == LayoutTypeButton.TwoUpOneDown.rawValue {
-            self.currentLayoutView.layoutType = .TwoUpOneDown
+            self.gridView.layoutType = .TwoUpOneDown
         } else {
-            self.currentLayoutView.layoutType = .TwoUpTwoDown
+            self.gridView.layoutType = .TwoUpTwoDown
         }
     }
     
@@ -215,18 +215,18 @@ class ViewController: UIViewController {
     }
     
     //MARK: Transform, Animation and Reset Layout View
-    /// Function managing the translation of the currentLayoutView during the swipe
+    /// Function managing the translation of the gridView during the swipe
     /// - Parameter gesture: UIPanGestureRecognizer
     private func transformLayoutView(gesture: UIPanGestureRecognizer) {
         // Translation
-        var translation = gesture.translation(in: currentLayoutView)
+        var translation = gesture.translation(in: gridView)
         switch orientation {
         case .portrait:
             if translation.y >= 0 {
                 translation.y = 0 // so we can't slide down
             } else {
                 let translationTransform = CGAffineTransform(translationX: 0, y: translation.y)
-                currentLayoutView.transform = translationTransform
+                gridView.transform = translationTransform
             }
             imageToShare = translation.y <= negativeTranslationToShare ? true : false
         case .landscape:
@@ -234,13 +234,13 @@ class ViewController: UIViewController {
                 translation.x = 0 // so we can't slide to the right
             } else {
                 let translationTransform = CGAffineTransform(translationX: translation.x, y: 0)
-                currentLayoutView.transform = translationTransform
+                gridView.transform = translationTransform
             }
             imageToShare = translation.x <= negativeTranslationToShare ? true : false
         }
     }
     
-    /// Function performing the animation allowing the currentLayoutView to exit outside the screen.
+    /// Function performing the animation allowing the gridView to exit outside the screen.
     private func animationLayoutView() {
         // Animation Question View
         if imageToShare == false {
@@ -256,7 +256,7 @@ class ViewController: UIViewController {
                 translationTransform = CGAffineTransform(translationX: 0, y: -screenHeight)
             }
             UIView.animate(withDuration: 0.5, animations: {
-                self.currentLayoutView.transform = translationTransform
+                self.gridView.transform = translationTransform
             }, completion: { (success) in
                 if success {
                     self.picturesharing()
@@ -265,18 +265,17 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    /// Function performing the animation allowing to return the currentLayoutView to the initial position.
+    /// Function performing the animation allowing to return the gridView to the initial position.
     private func resetLayoutView() {
         UIView.animate(withDuration: 0.5, animations: {
-            self.currentLayoutView.transform = .identity
+            self.gridView.transform = .identity
         }, completion:nil)
     }
     
     //MARK: picture sharing
-    /// Function transforming current LayoutView into an image then launching a window to share this image.
+    /// Function transforming GridView into an image then launching a window to share this image.
     private func picturesharing(){
-        let items = [self.currentLayoutView.asImage()]
+        let items = [self.gridView.asImage()]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true, completion: nil)
         ac.completionWithItemsHandler = { activity, success, items, error in
