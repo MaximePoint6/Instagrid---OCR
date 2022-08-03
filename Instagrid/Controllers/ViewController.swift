@@ -48,12 +48,15 @@ class ViewController: UIViewController {
     }
     
     //MARK: UI
+    /// Function updating the UI, in particular the font.
     private func setupUI() {
         appTitle.font = UIFont(name: "ThirstySoftRegular", size: 30)
         appSubtitle.font = UIFont(name: "Delm-Medium", size: 20)
         horizontalAppSubtitle.font = UIFont(name: "Delm-Medium", size: 20)
     }
     
+    /// Function modifying the UI when selecting the layout button and changing the layout type of the currentLayoutView.
+    /// - Parameter sender: Button selected to change layout
     @IBAction func layoutSelection(_ sender: UIButton) {
         _ = self.layoutsButtons.map { $0.isSelected = false } // replace the loop "for"
         sender.isSelected = !sender.isSelected
@@ -70,12 +73,15 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Function launching the procedure for adding a photo.
+    /// - Parameter sender: Button selected to add a photo
     @IBAction func addPicture(_ sender: UIButton) {
         layoutButtonClicked = sender
         showImagePickerOption()
     }
     
     //MARK: ImagePicker
+    /// Function displaying a popup to choose the source (library or camera) in order to add an image.
     private func showImagePickerOption() {
         let alertVC = UIAlertController(title: "Pick a Photo", message: "Choose a picture from Library or camera", preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
@@ -92,6 +98,7 @@ class ViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    /// Function verifying and/or requesting authorizations for the use of the camera
     private func cameraAuthorization() {
         // Authorization for Camera
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -127,6 +134,7 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Function verifying and/or requesting authorizations for the use of the library
     private func photosAutorization(){
         // Authorization for Photos
         var authorizationStatus : PHAuthorizationStatus
@@ -193,6 +201,8 @@ class ViewController: UIViewController {
     }
     
     //MARK: Swipe up and Swipe left
+    /// Function managing the swipe and the resulting actions from it according to the status.
+    /// - Parameter sender: UIPanGestureRecognizer
     @objc private func didSwipe(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began, .changed:
@@ -205,6 +215,8 @@ class ViewController: UIViewController {
     }
     
     //MARK: Transform, Animation and Reset Layout View
+    /// Function managing the translation of the currentLayoutView during the swipe
+    /// - Parameter gesture: UIPanGestureRecognizer
     private func transformLayoutView(gesture: UIPanGestureRecognizer) {
         // Translation
         var translation = gesture.translation(in: currentLayoutView)
@@ -228,6 +240,7 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Function performing the animation allowing the currentLayoutView to exit outside the screen.
     private func animationLayoutView() {
         // Animation Question View
         if imageToShare == false {
@@ -252,6 +265,8 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    /// Function performing the animation allowing to return the currentLayoutView to the initial position.
     private func resetLayoutView() {
         UIView.animate(withDuration: 0.5, animations: {
             self.currentLayoutView.transform = .identity
@@ -259,6 +274,7 @@ class ViewController: UIViewController {
     }
     
     //MARK: picture sharing
+    /// Function transforming current LayoutView into an image then launching a window to share this image.
     private func picturesharing(){
         let items = [self.currentLayoutView.asImage()]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)

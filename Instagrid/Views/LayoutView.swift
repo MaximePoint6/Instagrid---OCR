@@ -30,6 +30,7 @@ class LayoutView: UIView {
         }
     }
     
+    /// Function updating the current layout according to the type of layout selected.
     func currentLayoutUpdate() {
         for button in Imagesbuttons {
             button.isHidden = false
