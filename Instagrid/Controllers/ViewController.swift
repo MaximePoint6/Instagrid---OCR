@@ -193,9 +193,9 @@ class ViewController: UIViewController {
     @objc private func didSwipe(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began, .changed:
-            transformLayoutView(gesture: sender)
+            transformGridView(gesture: sender)
         case .ended, .cancelled:
-            animationLayoutView()
+            animationGridView()
         default:
             break
         }
@@ -204,7 +204,7 @@ class ViewController: UIViewController {
     //MARK: Transform, Animation and Reset Layout View
     /// Function managing the translation of the gridView during the swipe
     /// - Parameter gesture: UIPanGestureRecognizer
-    private func transformLayoutView(gesture: UIPanGestureRecognizer) {
+    private func transformGridView(gesture: UIPanGestureRecognizer) {
         // Translation
         var translation = gesture.translation(in: gridView)
         switch orientation {
@@ -228,10 +228,10 @@ class ViewController: UIViewController {
     }
     
     /// Function performing the animation allowing the gridView to exit outside the screen.
-    private func animationLayoutView() {
+    private func animationGridView() {
         // Animation Question View
         if imageToShare == false {
-            resetLayoutView()
+            resetGridView()
         } else {
             let screenHeight = UIScreen.main.bounds.height
             let screenWidth = UIScreen.main.bounds.width
@@ -253,7 +253,7 @@ class ViewController: UIViewController {
     }
     
     /// Function performing the animation allowing to return the gridView to the initial position.
-    private func resetLayoutView() {
+    private func resetGridView() {
         UIView.animate(withDuration: 0.5, animations: {
             self.gridView.transform = .identity
         }, completion:nil)
@@ -266,7 +266,7 @@ class ViewController: UIViewController {
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true, completion: nil)
         ac.completionWithItemsHandler = { activity, success, items, error in
-            self.resetLayoutView()
+            self.resetGridView()
         }
         imageToShare = false
     }
