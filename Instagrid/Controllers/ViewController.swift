@@ -103,16 +103,12 @@ class ViewController: UIViewController {
         // Authorization for Camera
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized: // The user has previously granted access to the camera.
-            let cameraImagePicker = self.imagePicker(sourceType: .camera)
-            cameraImagePicker.delegate = self
-            present(cameraImagePicker, animated: true){}
+            self.imagePicker(sourceType: .camera)
         case .notDetermined: // The user has not yet been asked for camera access.
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
                     DispatchQueue.main.async {
-                        let cameraImagePicker = self.imagePicker(sourceType: .camera)
-                        cameraImagePicker.delegate = self
-                        self.present(cameraImagePicker, animated: true){}
+                        self.imagePicker(sourceType: .camera)
                     }
                 }
             }
@@ -145,34 +141,24 @@ class ViewController: UIViewController {
         }
         switch authorizationStatus {
         case .authorized: // The user has previously granted access to the photo.
-            let imagePicker = self.imagePicker(sourceType: .photoLibrary)
-            imagePicker.delegate = self
-            present(imagePicker, animated: true){}
+            self.imagePicker(sourceType: .photoLibrary)
         case .limited:
-            let imagePicker = self.imagePicker(sourceType: .photoLibrary)
-            imagePicker.delegate = self
-            present(imagePicker, animated: true){}
+            self.imagePicker(sourceType: .photoLibrary)
         case .notDetermined: // The user has not yet been asked for photos access.
             if #available(iOS 14, *) {
                 PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
                     DispatchQueue.main.async{
                         if status == .authorized {
-                            let libraryImagePicker = self.imagePicker(sourceType: .photoLibrary)
-                            libraryImagePicker.delegate = self
-                            self.present(libraryImagePicker, animated: true){}
+                            self.imagePicker(sourceType: .photoLibrary)
                         } else if status == .limited {
-                            let libraryImagePicker = self.imagePicker(sourceType: .photoLibrary)
-                            libraryImagePicker.delegate = self
-                            self.present(libraryImagePicker, animated: true){}
+                            self.imagePicker(sourceType: .photoLibrary)
                         }
                     }
                 }
             } else {
                 PHPhotoLibrary.requestAuthorization(){ status in
                     if status == .authorized {
-                        let libraryImagePicker = self.imagePicker(sourceType: .photoLibrary)
-                        libraryImagePicker.delegate = self
-                        self.present(libraryImagePicker, animated: true){}
+                        self.imagePicker(sourceType: .photoLibrary)
                     }
                 }
             }
@@ -194,10 +180,11 @@ class ViewController: UIViewController {
         }
     }
     
-    private func imagePicker(sourceType: UIImagePickerController.SourceType) -> UIImagePickerController {
+    private func imagePicker(sourceType: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = sourceType
-        return imagePicker
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true){}
     }
     
     //MARK: Swipe up and Swipe left
