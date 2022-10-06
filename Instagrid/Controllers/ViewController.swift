@@ -41,13 +41,17 @@ class ViewController: UIViewController {
         gridView.addGestureRecognizer(swipeGestureRecognizerUp)
     }
     
+    
+    
     //MARK: DEvice orientation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         orientation = UIDevice.current.orientation.isLandscape ? .landscape : .portrait
     }
     
-    //MARK: UI
+    
+    
+    //MARK: UI + logic
     /// Function updating the UI, in particular the font.
     private func setupUI() {
         appTitle.font = UIFont(name: "ThirstySoftRegular", size: 30)
@@ -79,6 +83,8 @@ class ViewController: UIViewController {
         layoutButtonClicked = sender
         showImagePickerOption()
     }
+    
+    
     
     //MARK: ImagePicker
     /// Function displaying a popup to choose the source (library or camera) in order to add an image.
@@ -126,7 +132,9 @@ class ViewController: UIViewController {
         case .restricted: // The user can't grant access due to restrictions.
             return
         @unknown default:
-            fatalError()
+            //fatalError()
+            return
+            // popup une erreur est survenue
         }
     }
     
@@ -187,6 +195,8 @@ class ViewController: UIViewController {
         self.present(imagePicker, animated: true){}
     }
     
+    
+    
     //MARK: Swipe up and Swipe left
     /// Function managing the swipe and the resulting actions from it according to the status.
     /// - Parameter sender: UIPanGestureRecognizer
@@ -200,6 +210,8 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+    
     
     //MARK: Transform, Animation and Reset Layout View
     /// Function managing the translation of the gridView during the swipe
@@ -259,6 +271,8 @@ class ViewController: UIViewController {
         }, completion:nil)
     }
     
+    
+    
     //MARK: picture sharing
     /// Function transforming GridView into an image then launching a window to share this image.
     private func picturesharing(){
@@ -272,6 +286,8 @@ class ViewController: UIViewController {
     }
     
 }
+
+
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

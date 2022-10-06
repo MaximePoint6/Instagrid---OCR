@@ -101,15 +101,15 @@
                                         <exclude reference="tIM-AB-9zG"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="Dbw-4T-41c"/>
+                                        <exclude reference="QZl-MP-f40"/>
+                                        <exclude reference="Y64-V1-DEG"/>
+                                        <exclude reference="bHU-RV-O7B"/>
                                         <exclude reference="7Ye-ae-10R"/>
                                         <exclude reference="8LA-CF-mwJ"/>
                                         <exclude reference="JHW-8x-h7E"/>
                                         <exclude reference="RfG-rR-rnH"/>
                                         <exclude reference="wNv-5I-hnI"/>
-                                        <exclude reference="Dbw-4T-41c"/>
-                                        <exclude reference="QZl-MP-f40"/>
-                                        <exclude reference="Y64-V1-DEG"/>
-                                        <exclude reference="bHU-RV-O7B"/>
                                         <exclude reference="8Uj-GN-JyW"/>
                                         <exclude reference="LKx-7N-n9U"/>
                                         <exclude reference="fkX-2v-b3Y"/>
@@ -128,15 +128,15 @@
                                         <include reference="tIM-AB-9zG"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="Dbw-4T-41c"/>
+                                        <include reference="QZl-MP-f40"/>
+                                        <include reference="Y64-V1-DEG"/>
+                                        <include reference="bHU-RV-O7B"/>
                                         <include reference="7Ye-ae-10R"/>
                                         <include reference="8LA-CF-mwJ"/>
                                         <include reference="JHW-8x-h7E"/>
                                         <include reference="RfG-rR-rnH"/>
                                         <include reference="wNv-5I-hnI"/>
-                                        <include reference="Dbw-4T-41c"/>
-                                        <include reference="QZl-MP-f40"/>
-                                        <include reference="Y64-V1-DEG"/>
-                                        <include reference="bHU-RV-O7B"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
